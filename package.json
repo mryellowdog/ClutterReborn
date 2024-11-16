@@ -1,17 +1,19 @@
 {
-  "name": "html-css",
-  "version": "1.0.0",
-  "description": "A template for HTML and CSS",
+  "name": "ClutterReborn",
+  "version": "0.0.1",
+  "description": "A remake of the Clutter Scratch website",
   "main": "index.html",
   "scripts": {
     "start": "serve"
   },
   "keywords": [
     "html",
-    "css"
+    "css",
+    "js",
+    "scratch"
   ],
-  "author": "Ives van Hoorne",
-  "license": "MIT",
+  "author": "Mryellowdog",
+  "license": "",
   "devDependencies": {
     "serve": "11.2.0"
   }
