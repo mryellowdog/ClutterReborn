@@ -1,0 +1,42 @@
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  max-width: 50%;
+  background-color: rgb(204, 153, 255);
+  margin: 0 auto;
+}
+div {
+  background-color: rgb(255, 204, 255);
+  text-align: center;
+  position: fixed;
+  width: 50vw;
+  height: 100vh; /* Full viewport height */
+}
+input {
+  border: 1px solid black;
+  border-radius: 50px;
+}
+button {
+  border: 1px solid black;
+  border-radius: 50px;
+  background-color: plum;
+}
+
+#next {
+  background-image: url("https://web.archive.org/web/20110914012900im_/http://clutter.scratch.mit.edu/images/forwardArrowTrans.png");
+  height: 38px;
+  width: 63px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  background-repeat: no-repeat;
+}
+#prev {
+  background-image: url("https://web.archive.org/web/20110914012900im_/http://clutter.scratch.mit.edu/images/backArrowTrans.png");
+  height: 38px;
+  width: 63px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  background-repeat: no-repeat;
+}
