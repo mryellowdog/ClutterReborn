@@ -66,7 +66,7 @@ async function add() {
     for(let i = 0; i < studioProjects.length; i++) {
       console.log(studioProjects[i]);
       get('https://trampoline.turbowarp.org/api/projects/' + studioProjects[i]);
-      list.push('https://scratch.mit.edu/' + studioProjects[i]);
+      list.push('https://scratch.mit.edu/projects/' + studioProjects[i]);
       frame.src = list[i] + "/embed";
       if (list.length > 1) {
         nex.style.visibility = "visible";
