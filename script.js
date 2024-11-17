@@ -18,7 +18,7 @@ async function get(url) {
 let projectTitle = document.getElementById('currentProject');
 function updateProjectTitle(refresh = false) {
   if(refresh === true) {
-    get(list[slide]);
+    get('https://trampoline.turbowarp.org/api/projects/' + list[slide]);
   };
   projectTitle.innerText = mostRecent;
 };
