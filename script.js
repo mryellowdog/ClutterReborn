@@ -19,6 +19,7 @@ function getFromStudio(id) {
     response.json().then((json) => {
       console.log(json);
       json.forEach((project) => {
+        console.log(project.id);
         projectURLs.push(`https://scratch.mit.edu/projects/${project.id}`);
       });
     });
