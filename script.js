@@ -17,14 +17,12 @@ function getStringBetween(str, startStr, endStr) {
   console.log('got string', str.substring(startIndex, endIndex));
   return str.substring(startIndex, endIndex);
 }
-function getFromStudio(id) {
+async function getFromStudio(id) {
   let projectURLs = [];
-  fetch(`https://trampoline.turbowarp.org/api/studios/${id}/projects/`).then((response) => {
-    response.json().then((json) => {
-      json.forEach((project) => {
-        projectURLs.push('https://trampoline.turbowarp.org/api/projects/' + project.id);
-      });
-    });
+  let response = await fetch(`https://trampoline.turbowarp.org/api/studios/${id}/projects/`)
+  let json = await response.json()
+  json.forEach((project) => {
+    projectURLs.push('https://trampoline.turbowarp.org/api/projects/' + project.id);
   });
   console.log('fetched studio data', projectURLs);
   return projectURLs;
