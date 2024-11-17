@@ -1,8 +1,12 @@
 var plist = document.getElementById("project-list");
 async function get(url) {
+  console.log(url);
   let obj = await fetch(url);
+  console.log(obj);
   let out = await obj.text();
+  console.log(out);
   let json = JSON.parse(out);
+  console.log(json);
   plist.innerHTML = plist.innerHTML + json.title + ", ";
   console.log('updated HTML');
 }
