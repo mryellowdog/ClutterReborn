@@ -66,7 +66,7 @@ async function add() {
     console.log(studioProjects);
     for(let i = 0; i > studioProjects.length; i++) {
       console.log(studioProjects[i]);
-      //get('https://trampoline.turbowarp.org/api/projects/' + studioProjects[i]);
+      get('https://trampoline.turbowarp.org/api/projects/' + studioProjects[i]);
     };
   } else {
     alert("You can only submit valid Scratch project links.");
