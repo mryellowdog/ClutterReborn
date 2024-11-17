@@ -38,7 +38,7 @@ async function getFromStudio(id = input.value) {
   console.log('fetched studio data', projectURLs);
   return projectURLs;
 };
-async function add(id) {
+async function add(id = input.value) {
   if (input.value.startsWith("https://scratch.mit.edu/projects")) {
     list.push(input.value);
     slide = 0;
@@ -46,6 +46,7 @@ async function add(id) {
     if (list.length > 1) {
       nex.style.visibility = "visible";
     }
+    updateProjectTitle();
     let id = getStringBetween(
       input.value,
       "https://scratch.mit.edu/projects/",
@@ -77,6 +78,7 @@ async function add(id) {
     };
     frame.src = list[0] + "embed";
     slide = 0;
+    updateProjectTitle();
   } else {
     console.warn('invalid URL', input.value);
     alert("You can only submit valid Scratch project links.");
@@ -88,8 +90,9 @@ if (list.length !== 0) {
 } else {
   nex.style.visibility = "hidden";
 }
+updateProjectTitle();
 function next() {
-  slide += 1;
+  slide++;
   if (slide == list.length - 1) {
     slide = list.length - 1;
     nex.style.visibility = "hidden";
@@ -102,9 +105,10 @@ function next() {
   if (slide !== 0) {
     pre.style.visibility = "visible";
   }
+  updateProjectTitle();
 }
 function prev() {
-  slide -= 1;
+  slide--;
   if (slide == list.length - 1) {
     slide = list.length - 1;
     nex.style.visibility = "hidden";
@@ -119,4 +123,5 @@ function prev() {
   if (slide !== 0) {
     pre.style.visibility = "visible";
   }
+  updateProjectTitle();
 }
