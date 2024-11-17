@@ -11,7 +11,17 @@ function getStringBetween(str, startStr, endStr) {
   const endIndex = str.indexOf(endStr, startIndex);
   return str.substring(startIndex, endIndex);
 }
-
+function getFromStudio(id) {
+  let projectURLs = [];
+  fetch(`https://trampoline.turbowarp.org/api/studios/${id}/projects/`).then((response) => {
+    response.json().then((json) => {
+      json.forEach((project) => {
+        projectURLs.push(`https://scratch.mit.edu/projects/${project.id}`);
+      });
+    });
+  });
+  return projectURLs;
+};
 var frame = document.getElementById("frame");
 var pre = document.getElementById("prev");
 var nex = document.getElementById("next");
@@ -33,7 +43,7 @@ function add() {
       "/"
     );
     get(
-      "https://api.codetabs.com/v1/proxy/?quest=https://api.scratch.mit.edu/projects/" +
+      "https://trampoline.turbowarp.org/api/projects/" +
         id
     );
     /*let json = get("https://api.codetabs.com/v1/proxy/?quest=https://api.scratch.mit.edu/projects/" + id);
@@ -41,6 +51,16 @@ function add() {
           let o = JSON.parse(json);
           plist.innerHTML = plist.innerHTML + ", " + o.title["0"];
           */
+  } else if (input.value.startsWith("https://scratch.mit.edu/studios")) {
+    let id = getStringBetween(
+      input.value,
+      "https://scratch.mit.edu/studios/",
+      "/"
+    );
+    const studioProjects = getFromStudio(id);
+    studioProjects.forEach((el) => {
+      get('https://trampoline.turbowarp.org/api/projects/' + el);
+    };
   } else {
     alert("You can only submit valid Scratch project links.");
   }
