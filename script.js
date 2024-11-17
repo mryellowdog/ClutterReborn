@@ -34,7 +34,7 @@ pre.style.visibility = "hidden";
 const list = [];
 var slide = 0;
 input = document.getElementById("input");
-function add() {
+async function add() {
   if (input.value.startsWith("https://scratch.mit.edu/projects")) {
     list.push(input.value);
     slide = 0;
@@ -62,7 +62,7 @@ function add() {
       "https://scratch.mit.edu/studios/",
       "/"
     );
-    let studioProjects = getFromStudio(id);
+    let studioProjects = await getFromStudio(id);
     console.log(studioProjects);
     for(let i = 0; i > studioProjects.length; i++) {
       console.log(studioProjects[i]);
