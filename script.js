@@ -21,9 +21,7 @@ function getFromStudio(id) {
   let projectURLs = [];
   fetch(`https://trampoline.turbowarp.org/api/studios/${id}/projects/`).then((response) => {
     response.json().then((json) => {
-      console.log(json);
       json.forEach((project) => {
-        console.log(project.id);
         projectURLs.push('https://trampoline.turbowarp.org/api/projects/' + project.id);
       });
     });
@@ -66,7 +64,7 @@ function add() {
       "https://scratch.mit.edu/studios/",
       "/"
     );
-    const studioProjects = getFromStudio(id);
+    let studioProjects = getFromStudio(id);
     console.log(studioProjects);
     studioProjects.forEach((el) => {
       get('https://trampoline.turbowarp.org/api/projects/' + el);
