@@ -39,9 +39,9 @@ async function getFromStudio(id = input.value) {
   console.log('fetched studio data', projectURLs);
   return projectURLs;
 };
-async function add(id = input.value) {
+async function add(idid = input.value) {
   if (input.value.startsWith("https://scratch.mit.edu/projects")) {
-    list.push(input.value);
+    list.push(inid);
     slide = 0;
     frame.src = list[slide] + "embed";
     if (list.length > 1) {
@@ -49,7 +49,7 @@ async function add(id = input.value) {
     }
     updateProjectTitle();
     let id = getStringBetween(
-      input.value,
+      inid,
       "https://scratch.mit.edu/projects/",
       "/"
     );
@@ -62,9 +62,9 @@ async function add(id = input.value) {
           let o = JSON.parse(json);
           plist.innerHTML = plist.innerHTML + ", " + o.title["0"];
           */
-  } else if (input.value.startsWith("https://scratch.mit.edu/studios")) {
+  } else if (inid.startsWith("https://scratch.mit.edu/studios")) {
     let id = getStringBetween(
-      input.value,
+      inid,
       "https://scratch.mit.edu/studios/",
       "/"
     );
@@ -81,7 +81,7 @@ async function add(id = input.value) {
     slide = 0;
     updateProjectTitle();
   } else {
-    console.warn('invalid URL', input.value);
+    console.warn('invalid URL', inid);
     alert("You can only submit valid Scratch project links.");
   }
 }
