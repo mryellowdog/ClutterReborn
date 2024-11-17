@@ -57,13 +57,18 @@ async function add() {
           plist.innerHTML = plist.innerHTML + ", " + o.title["0"];
           */
   } else if (input.value.startsWith("https://scratch.mit.edu/studios")) {
+    list.push(input.value);
+    slide = 0;
+    frame.src = list[slide] + "embed";
+    if (list.length > 1) {
+      nex.style.visibility = "visible";
+    }
     let id = getStringBetween(
       input.value,
       "https://scratch.mit.edu/studios/",
       "/"
     );
     let studioProjects = await getFromStudio(id);
-    console.log(studioProjects.length);
     for(let i = 0; i < studioProjects.length; i++) {
       console.log(studioProjects[i]);
       get(studioProjects[i]);
