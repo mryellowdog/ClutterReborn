@@ -9,6 +9,7 @@ async function get(url) {
 function getStringBetween(str, startStr, endStr) {
   const startIndex = str.indexOf(startStr) + startStr.length;
   const endIndex = str.indexOf(endStr, startIndex);
+  console.log('updated HTML');
   return str.substring(startIndex, endIndex);
 }
 function getFromStudio(id) {
@@ -20,6 +21,7 @@ function getFromStudio(id) {
       });
     });
   });
+  console.log('fetched studio data');
   return projectURLs;
 };
 var frame = document.getElementById("frame");
