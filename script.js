@@ -67,7 +67,7 @@ function add() {
 }
 
 if (list.length !== 0) {
-  frame.src = list[slide] + "embed";
+  frame.src = list[slide] + "/embed";
 } else {
   nex.style.visibility = "hidden";
 }
