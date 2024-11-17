@@ -6,20 +6,21 @@ pre.style.visibility = "hidden";
 const list = [];
 var slide = 0;
 let input = document.getElementById("input");
+let mostRecent;
 async function get(url) {
-  console.log(url);
   let obj = await fetch(url);
-  console.log(obj);
   let out = await obj.text();
-  console.log(out);
   let json = JSON.parse(out);
-  console.log(json);
   plist.innerHTML = plist.innerHTML + json.title + ", ";
   console.log('updated HTML');
+  mostRecent = json.title;
 }
 let projectTitle = document.getElementById('currentProject');
-function updateProjectTitle() {
-  projectTitle.innerText = list[slide];
+function updateProjectTitle(refresh = false) {
+  if(refresh === true) {
+    get(list[slide]);
+  };
+  projectTitle.innerText = json.title;
 };
 //console.log(get("https://api.allorigins.win/raw?url=https://api.scratch.mit.edu/"))
 function getStringBetween(str, startStr, endStr) {
@@ -90,7 +91,7 @@ if (list.length !== 0) {
 } else {
   nex.style.visibility = "hidden";
 }
-updateProjectTitle();
+updateProjectTitle(true);
 function next() {
   slide++;
   if (slide == list.length - 1) {
