@@ -16,12 +16,12 @@ async function get(url) {
   mostRecent = json.title;
 }
 let projectTitle = document.getElementById('currentProject');
-function updateProjectTitle(refresh = false) {
+/*function updateProjectTitle(refresh = false) { //Someone else deal with fixing this.
   if(refresh === true) {
     get('https://trampoline.turbowarp.org/api/projects/' + list[slide].substring(33));
   };
   projectTitle.innerText = mostRecent;
-};
+};*/
 //console.log(get("https://api.allorigins.win/raw?url=https://api.scratch.mit.edu/"))
 function getStringBetween(str, startStr, endStr) {
   const startIndex = str.indexOf(startStr) + startStr.length;
@@ -48,7 +48,7 @@ async function add() {
     if (list.length > 1) {
       nex.style.visibility = "visible";
     }
-    updateProjectTitle();
+    //updateProjectTitle();
     let id = getStringBetween(
       url,
       "https://scratch.mit.edu/projects/",
@@ -80,7 +80,7 @@ async function add() {
     };
     frame.src = list[0] + "embed";
     slide = 0;
-    updateProjectTitle();
+    //updateProjectTitle();
   } else {
     console.warn('invalid URL', url);
     alert("You can only submit valid Scratch project links.");
@@ -92,7 +92,7 @@ if (list.length !== 0) {
 } else {
   nex.style.visibility = "hidden";
 }
-updateProjectTitle(true);
+//updateProjectTitle(true);
 function next() {
   slide++;
   if (slide == list.length - 1) {
@@ -107,7 +107,7 @@ function next() {
   if (slide !== 0) {
     pre.style.visibility = "visible";
   }
-  updateProjectTitle(true);
+  //updateProjectTitle(true);
 }
 function prev() {
   slide--;
@@ -125,5 +125,5 @@ function prev() {
   if (slide !== 0) {
     pre.style.visibility = "visible";
   }
-  updateProjectTitle(true);
+  //updateProjectTitle(true);
 }
