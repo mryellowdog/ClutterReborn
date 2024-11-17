@@ -63,7 +63,7 @@ async function add() {
       "/"
     );
     let studioProjects = await getFromStudio(id);
-    console.log(studioProjects);
+    console.log(studioProjects.length);
     for(let i = 0; i > studioProjects.length; i++) {
       console.log(studioProjects[i]);
       get('https://trampoline.turbowarp.org/api/projects/' + studioProjects[i]);
