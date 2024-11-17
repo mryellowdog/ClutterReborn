@@ -106,7 +106,7 @@ function next() {
   if (slide !== 0) {
     pre.style.visibility = "visible";
   }
-  updateProjectTitle();
+  updateProjectTitle(true);
 }
 function prev() {
   slide--;
@@ -124,5 +124,5 @@ function prev() {
   if (slide !== 0) {
     pre.style.visibility = "visible";
   }
-  updateProjectTitle();
+  updateProjectTitle(true);
 }
