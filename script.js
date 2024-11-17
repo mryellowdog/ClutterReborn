@@ -24,7 +24,7 @@ function getFromStudio(id) {
       console.log(json);
       json.forEach((project) => {
         console.log(project.id);
-        projectURLs.push('https://scratch.mit.edu/projects/' + project.id);
+        projectURLs.push('https://trampoline.turbowarp.org/api/projects/' + project.id);
       });
     });
   });
