@@ -1,4 +1,11 @@
 var plist = document.getElementById("project-list");
+var frame = document.getElementById("frame");
+var pre = document.getElementById("prev");
+var nex = document.getElementById("next");
+pre.style.visibility = "hidden";
+const list = [];
+var slide = 0;
+let input = document.getElementById("input");
 async function get(url) {
   console.log(url);
   let obj = await fetch(url);
@@ -10,6 +17,10 @@ async function get(url) {
   plist.innerHTML = plist.innerHTML + json.title + ", ";
   console.log('updated HTML');
 }
+let projectTitle = document.getElementById('currentProject');
+function updateProjectTitle() {
+  projectTitle.innerText = list[slide];
+};
 //console.log(get("https://api.allorigins.win/raw?url=https://api.scratch.mit.edu/"))
 function getStringBetween(str, startStr, endStr) {
   const startIndex = str.indexOf(startStr) + startStr.length;
@@ -17,7 +28,7 @@ function getStringBetween(str, startStr, endStr) {
   console.log('got string', str.substring(startIndex, endIndex));
   return str.substring(startIndex, endIndex);
 }
-async function getFromStudio(id) {
+async function getFromStudio(id = input.value) {
   let projectURLs = [];
   let response = await fetch(`https://trampoline.turbowarp.org/api/studios/${id}/projects/`)
   let json = await response.json()
@@ -27,14 +38,7 @@ async function getFromStudio(id) {
   console.log('fetched studio data', projectURLs);
   return projectURLs;
 };
-var frame = document.getElementById("frame");
-var pre = document.getElementById("prev");
-var nex = document.getElementById("next");
-pre.style.visibility = "hidden";
-const list = [];
-var slide = 0;
-input = document.getElementById("input");
-async function add() {
+async function add(id) {
   if (input.value.startsWith("https://scratch.mit.edu/projects")) {
     list.push(input.value);
     slide = 0;
