@@ -60,7 +60,7 @@ function add() {
     const studioProjects = getFromStudio(id);
     studioProjects.forEach((el) => {
       get('https://trampoline.turbowarp.org/api/projects/' + el);
-    };
+    });
   } else {
     alert("You can only submit valid Scratch project links.");
   }
