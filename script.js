@@ -39,13 +39,8 @@ async function getFromStudio(id = input.valu) {
   console.log('fetched studio data', projectURLs);
   return projectURLs;
 };
-async function add(funcIn) {
-  let url;
-  if(funcIn === undefined || funcIn === null) {
-    url === input.value;
-  } else {
-    url === funcIn;
-  };
+async function add() {
+  let url = input.value;
   if (url.startsWith("https://scratch.mit.edu/projects")) {
     list.push(url);
     slide = 0;
