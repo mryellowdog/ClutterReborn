@@ -67,6 +67,7 @@ function add() {
     let studioProjects = getFromStudio(id);
     console.log(studioProjects);
     studioProjects.forEach((el) => {
+      console.log(el);
       get('https://trampoline.turbowarp.org/api/projects/' + el);
     });
   } else {
