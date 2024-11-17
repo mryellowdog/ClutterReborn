@@ -23,7 +23,7 @@ function getFromStudio(id) {
       });
     });
   });
-  console.log('fetched studio data');
+  console.log('fetched studio data', projectURLs);
   return projectURLs;
 };
 var frame = document.getElementById("frame");
