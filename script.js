@@ -4,12 +4,13 @@ async function get(url) {
   let out = await obj.text();
   let json = JSON.parse(out);
   plist.innerHTML = plist.innerHTML + json.title + ", ";
+  console.log('updated HTML');
 }
 //console.log(get("https://api.allorigins.win/raw?url=https://api.scratch.mit.edu/"))
 function getStringBetween(str, startStr, endStr) {
   const startIndex = str.indexOf(startStr) + startStr.length;
   const endIndex = str.indexOf(endStr, startIndex);
-  console.log('updated HTML');
+  console.log('got string', str.substring(startIndex, endIndex));
   return str.substring(startIndex, endIndex);
 }
 function getFromStudio(id) {
