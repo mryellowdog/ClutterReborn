@@ -22,7 +22,7 @@ async function getFromStudio(id) {
   let response = await fetch(`https://trampoline.turbowarp.org/api/studios/${id}/projects/`)
   let json = await response.json()
   json.forEach((project) => {
-    projectURLs.push('https://trampoline.turbowarp.org/api/projects/' + project.id);
+    projectURLs.push(project.id);
   });
   console.log('fetched studio data', projectURLs);
   return projectURLs;
@@ -57,12 +57,6 @@ async function add() {
           plist.innerHTML = plist.innerHTML + ", " + o.title["0"];
           */
   } else if (input.value.startsWith("https://scratch.mit.edu/studios")) {
-    list.push(input.value);
-    slide = 0;
-    frame.src = list[slide] + "embed";
-    if (list.length > 1) {
-      nex.style.visibility = "visible";
-    }
     let id = getStringBetween(
       input.value,
       "https://scratch.mit.edu/studios/",
@@ -71,8 +65,14 @@ async function add() {
     let studioProjects = await getFromStudio(id);
     for(let i = 0; i < studioProjects.length; i++) {
       console.log(studioProjects[i]);
-      get(studioProjects[i]);
+      get('https://trampoline.turbowarp.org/api/projects/' + studioProjects[i]);
+      list.push('https://scratch.mit.edu/' + studioProjects[i]);
+      frame.src = list[i] + "embed";
+      if (list.length > 1) {
+        nex.style.visibility = "visible";
+      }
     };
+    slide = 0;
   } else {
     console.warn('invalid URL', input.value);
     alert("You can only submit valid Scratch project links.");
