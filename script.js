@@ -1,7 +1,7 @@
 var plist = document.getElementById("project-list");
 var frame = document.getElementById("frame");
 var pre = document.getElementById("prev");
-var nex = document.getElementById("nex\t");
+var nex = document.getElementById("next");
 pre.style.visibility = "hidden";
 const list = [];
 var slide = 0;
