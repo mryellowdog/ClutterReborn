@@ -1,7 +1,7 @@
 var plist = document.getElementById("project-list");
 var frame = document.getElementById("frame");
 var pre = document.getElementById("prev");
-var nex = document.getElementById("next");
+var nex = document.getElementById("nex\t");
 pre.style.visibility = "hidden";
 const list = [];
 var slide = 0;
@@ -29,7 +29,7 @@ function getStringBetween(str, startStr, endStr) {
   console.log('got string', str.substring(startIndex, endIndex));
   return str.substring(startIndex, endIndex);
 }
-async function getFromStudio(id = input.value) {
+async function getFromStudio(id = input.valu) {
   let projectURLs = [];
   let response = await fetch(`https://trampoline.turbowarp.org/api/studios/${id}/projects/`)
   let json = await response.json()
@@ -39,9 +39,15 @@ async function getFromStudio(id = input.value) {
   console.log('fetched studio data', projectURLs);
   return projectURLs;
 };
-async function add(idid = input.value) {
-  if (input.value.startsWith("https://scratch.mit.edu/projects")) {
-    list.push(inid);
+async function add(funcIn) {
+  let url;
+  if(funcIn === undefinded || funcIn === null) {
+    url === input.value;
+  } else {
+    url === funcIn;
+  };
+  if (url.startsWith("https://scratch.mit.edu/projects")) {
+    list.push(url);
     slide = 0;
     frame.src = list[slide] + "embed";
     if (list.length > 1) {
@@ -49,7 +55,7 @@ async function add(idid = input.value) {
     }
     updateProjectTitle();
     let id = getStringBetween(
-      inid,
+      url,
       "https://scratch.mit.edu/projects/",
       "/"
     );
@@ -62,9 +68,9 @@ async function add(idid = input.value) {
           let o = JSON.parse(json);
           plist.innerHTML = plist.innerHTML + ", " + o.title["0"];
           */
-  } else if (inid.startsWith("https://scratch.mit.edu/studios")) {
+  } else if (url.startsWith("https://scratch.mit.edu/studios")) {
     let id = getStringBetween(
-      inid,
+      url,
       "https://scratch.mit.edu/studios/",
       "/"
     );
@@ -81,7 +87,7 @@ async function add(idid = input.value) {
     slide = 0;
     updateProjectTitle();
   } else {
-    console.warn('invalid URL', inid);
+    console.warn('invalid URL', url);
     alert("You can only submit valid Scratch project links.");
   }
 }
