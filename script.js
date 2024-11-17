@@ -66,7 +66,7 @@ async function add() {
     console.log(studioProjects.length);
     for(let i = 0; i < studioProjects.length; i++) {
       console.log(studioProjects[i]);
-      get('https://trampoline.turbowarp.org/api/projects/' + studioProjects[i]);
+      get(studioProjects[i]);
     };
   } else {
     console.warn('invalid URL', input.value);
