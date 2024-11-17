@@ -67,7 +67,7 @@ async function add() {
       console.log(studioProjects[i]);
       get('https://trampoline.turbowarp.org/api/projects/' + studioProjects[i]);
       list.push('https://scratch.mit.edu/projects/' + studioProjects[i]);
-      frame.src = list[i] + "/embed";
+      frame.src = list[i] + "embed";
       if (list.length > 1) {
         nex.style.visibility = "visible";
       }
@@ -80,7 +80,7 @@ async function add() {
 }
 
 if (list.length !== 0) {
-  frame.src = list[slide] + "/embed";
+  frame.src = list[slide] + "embed";
 } else {
   nex.style.visibility = "hidden";
 }
