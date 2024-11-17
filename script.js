@@ -20,7 +20,7 @@ function updateProjectTitle(refresh = false) {
   if(refresh === true) {
     get(list[slide]);
   };
-  projectTitle.innerText = json.title;
+  projectTitle.innerText = mostRecent;
 };
 //console.log(get("https://api.allorigins.win/raw?url=https://api.scratch.mit.edu/"))
 function getStringBetween(str, startStr, endStr) {
