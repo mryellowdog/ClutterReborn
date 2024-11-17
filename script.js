@@ -41,7 +41,7 @@ async function getFromStudio(id = input.valu) {
 };
 async function add(funcIn) {
   let url;
-  if(funcIn === undefinded || funcIn === null) {
+  if(funcIn === undefined || funcIn === null) {
     url === input.value;
   } else {
     url === funcIn;
