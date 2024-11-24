@@ -137,7 +137,7 @@ if(window.location.hash) {
     add();
   } else if (hash.includes("projects:")) {
     hash = hash.replace("projects:", "");
-    hash = hash.split(',').map(word => word.trim());
+    hash = hash.split('-').map(word => word.trim());
     console.log(hash);
     for (var i = 0; i < hash.length; i++) {
       input.value = "https://scratch.mit.edu/projects/" + hash[i] + "/";
