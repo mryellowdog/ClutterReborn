@@ -23,7 +23,7 @@ button {
 }
 
 #next {
-  background-image: url("https://web.archive.org/web/20110914012900im_/http://clutter.scratch.mit.edu/images/forwardArrowTrans.png");
+  background-image: url("images/forwardArrowTrans.png");
   height: 38px;
   width: 63px;
   border: none;
@@ -32,7 +32,7 @@ button {
   background-repeat: no-repeat;
 }
 #prev {
-  background-image: url("https://web.archive.org/web/20110914012900im_/http://clutter.scratch.mit.edu/images/backArrowTrans.png");
+  background-image: url("images/backArrowTrans.png");
   height: 38px;
   width: 63px;
   border: none;
