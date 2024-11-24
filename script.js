@@ -127,3 +127,23 @@ function prev() {
   }
   //updateProjectTitle(true);
 }
+if(window.location.hash) {
+  var hash = window.location.hash.substring(1);
+  if (hash.includes("studio:")) {
+    hash = hash.replace("studio:", "");
+    input.value = "https://scratch.mit.edu/studios/" + hash + "/";
+    console.log("Found hash: " + hash);
+    console.log("https://scratch.mit.edu/studios/" + hash + "/");
+    add();
+  } else if (hash.includes("projects:")) {
+    hash = hash.replace("projects:", "");
+    hash = hash.split(',').map(word => word.trim());
+    console.log(hash);
+    for (var i = 0; i < hash.length; i++) {
+      input.value = "https://scratch.mit.edu/projects/" + hash[i] + "/";
+      add();
+    }
+  }
+} else {
+  console.log("Found no hash.");
+}
