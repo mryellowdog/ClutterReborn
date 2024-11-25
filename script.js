@@ -1,3 +1,5 @@
+var type = "none";
+var studio = "none";
 var plist = document.getElementById("project-list");
 var frame = document.getElementById("frame");
 var pre = document.getElementById("prev");
@@ -42,6 +44,7 @@ async function getFromStudio(id = input.valu) {
 async function add() {
   let url = input.value;
   if (url.startsWith("https://scratch.mit.edu/projects")) {
+    type = "projects";
     list.push(url);
     slide = 0;
     frame.src = list[slide] + "embed";
@@ -64,6 +67,14 @@ async function add() {
           plist.innerHTML = plist.innerHTML + ", " + o.title["0"];
           */
   } else if (url.startsWith("https://scratch.mit.edu/studios")) {
+    if (type !== "studios")
+    {
+      type = "studios";
+      studio = url.replace("https://scratch.mit.edu/studios/", "");
+      studio = studio.replace("/", "");
+    } else {
+      type = "projects";
+    }
     let id = getStringBetween(
       url,
       "https://scratch.mit.edu/studios/",
@@ -85,6 +96,47 @@ async function add() {
     console.warn('invalid URL', url);
     alert("You can only submit valid Scratch project links.");
   }
+}
+var sharelink = "hi";
+function share() {
+  if (type !== "none") {
+    if (type == "projects") {
+      sharelink = window.location.href;
+      sharelink = sharelink.replace(window.location.hash,"");
+      sharelink = sharelink + "#projects:"
+      for (let i = 0; i < list.length; i++) {
+        l = getStringBetween(
+          list[i],
+          "https://scratch.mit.edu/projects/",
+          "/"
+        );
+        if (i == 0) {
+          sharelink = sharelink + l; 
+        } else {
+          sharelink = sharelink + "," + l; 
+        }
+        
+      }
+      document.getElementById("sharelink").innerHTML = sharelink;
+      }
+       else if (type == "studios") {
+      
+      sharelink = window.location.href;
+      sharelink = sharelink.replace(window.location.hash,"");
+      sharelink = sharelink + "#studio:";
+      sharelink = sharelink + studio;
+      document.getElementById("sharelink").innerHTML = sharelink;
+    } else {
+      alert("No projects in your Clutter yet.")
+  }
+  document.getElementById("copybutton").style.visibility = "visible";
+}
+}
+
+document.getElementById("copybutton").style.visibility = "hidden";
+function copy() {
+  navigator.clipboard.writeText(sharelink);
+  document.getElementById("copybutton").innerHTML = "Copied";
 }
 
 if (list.length !== 0) {
